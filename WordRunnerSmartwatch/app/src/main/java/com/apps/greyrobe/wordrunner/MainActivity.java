@@ -1,4 +1,4 @@
-package com.apps.greyrobe.wordrunnersmartwatchandroid;
+package com.apps.greyrobe.wordrunner;
 
 import android.app.Activity;
 import android.os.Bundle;
