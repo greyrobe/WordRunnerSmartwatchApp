@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">WordRunnerSmartwatchAndroid</string>
     <string name="hello_round">Hello Round World!</string>
-    <string name="hello_square">Hello Square World!</string>
+    <string name="word_display_square">Press Start to begin WordRunner</string>
 </resources>

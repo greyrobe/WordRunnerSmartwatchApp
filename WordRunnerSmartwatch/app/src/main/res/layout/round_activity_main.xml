@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.apps.greyrobe.wordrunner.MainActivity"
-    tools:deviceIds="wear_round">
+    tools:deviceIds="wear_round"
+    android:weightSum="1">
+
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_weight="0.87"
+        android:gravity="center"
+        android:text="@string/word_display_square"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btn_toggle"
+        android:layout_width="112dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="@string/hello_round" />
-</RelativeLayout>
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:onClick="toggleButton"
+        android:text="Start" />
+</LinearLayout>

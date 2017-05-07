@@ -5,11 +5,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.apps.greyrobe.wordrunner.MainActivity"
-    tools:deviceIds="wear_square">
+    tools:deviceIds="wear_square"
+    android:weightSum="1">
 
     <TextView
         android:id="@+id/text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_weight="0.87"
+        android:gravity="center"
+        android:text="@string/word_display_square"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btn_toggle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_square" />
+        android:layout_marginTop="25dp"
+        android:text="Start"
+        android:onClick="toggleButton"/>
 </LinearLayout>
