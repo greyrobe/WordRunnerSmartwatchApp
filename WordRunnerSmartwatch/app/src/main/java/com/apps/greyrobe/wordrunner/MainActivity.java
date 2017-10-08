@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
                     for(; wordNum < story.length; wordNum++)
                     {
                         runOnUiThread(wordSetterThread);
-                        Thread.sleep(200 + story[wordNum].length()*10);
+                        Thread.sleep(100 + story[wordNum].length()*50);
                     }
                 }
                 catch (InterruptedException e) {}
@@ -86,7 +86,7 @@ public class MainActivity extends Activity {
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             if (is != null) {
                 while ((str = reader.readLine()) != null) {
-                    buf.append(str + "\n");
+                    buf.append(str);
                 }
             }
             story = buf.toString().split(" ");
