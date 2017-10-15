@@ -1,4 +1,4 @@
-package com.apps.greyrobe.wordrunner;
+package com.apps.greyrobe.wordrunner.oauth;
 
 import android.app.Activity;
 
@@ -8,6 +8,6 @@ import android.app.Activity;
 
 public interface OAuthListener {
     Activity getActivity();
-    String getToken();
-    void updateStatus(String s);
+    void updateStatus(String status);
+    void receiveApiToken(String token);
 }

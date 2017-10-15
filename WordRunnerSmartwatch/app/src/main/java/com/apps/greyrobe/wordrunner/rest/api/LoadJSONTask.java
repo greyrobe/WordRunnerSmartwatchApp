@@ -1,8 +1,9 @@
-package com.apps.greyrobe.wordrunner;
+package com.apps.greyrobe.wordrunner.rest.api;
 
 import android.os.AsyncTask;
 
-import com.apps.greyrobe.wordrunner.Response;
+import com.apps.greyrobe.wordrunner.books.Book;
+import com.apps.greyrobe.wordrunner.books.Library;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
@@ -11,9 +12,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 
-public class LoadJSONTask extends AsyncTask<String, Void, Book[]> {
+public class LoadJSONTask extends AsyncTask<String, Void, Library> {
 
     public LoadJSONTask(Listener listener) {
 
@@ -22,7 +22,7 @@ public class LoadJSONTask extends AsyncTask<String, Void, Book[]> {
 
     public interface Listener {
 
-        void onLoaded(Book[] bookList);
+        void onLoaded(Library library);
 
         void onError();
     }
@@ -30,14 +30,14 @@ public class LoadJSONTask extends AsyncTask<String, Void, Book[]> {
     private Listener mListener;
 
     @Override
-    protected Book[] doInBackground(String... strings) {
+    protected Library doInBackground(String... strings) {
         try {
 
-            String stringResponse = loadJSON(strings[0]);
+            String stringResponse = loadJSON(strings);
             Gson gson = new Gson();
 
-            Book[] books = gson.fromJson(stringResponse, Book[].class);
-            return books;
+            Library library = gson.fromJson(stringResponse, Library.class);
+            return library;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -48,11 +48,11 @@ public class LoadJSONTask extends AsyncTask<String, Void, Book[]> {
     }
 
     @Override
-    protected void onPostExecute(Book[] books) {
+    protected void onPostExecute(Library library) {
 
-        if (books != null) {
+        if (library != null) {
 
-            mListener.onLoaded(books);
+            mListener.onLoaded(library);
 
         } else {
 
@@ -60,7 +60,13 @@ public class LoadJSONTask extends AsyncTask<String, Void, Book[]> {
         }
     }
 
-    private String loadJSON(String jsonURL) throws IOException {
+    private String loadJSON(String... strings) throws IOException {
+        String jsonURL = strings[0];
+        String token = null;
+        //Case token provided
+        if(strings.length == 2) {
+            token = strings[1];
+        }
 
         URL url = new URL(jsonURL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -68,6 +74,10 @@ public class LoadJSONTask extends AsyncTask<String, Void, Book[]> {
         conn.setConnectTimeout(15000);
         conn.setRequestMethod("GET");
         conn.setDoInput(true);
+        if(token != null) {
+            conn.setRequestProperty("Authorization", "Bearer " + token);
+        }
+
         conn.connect();
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));

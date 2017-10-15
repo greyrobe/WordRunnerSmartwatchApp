@@ -1,4 +1,4 @@
-package com.apps.greyrobe.wordrunner;
+package com.apps.greyrobe.wordrunner.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.wearable.view.WatchViewStub;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.apps.greyrobe.wordrunner.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
