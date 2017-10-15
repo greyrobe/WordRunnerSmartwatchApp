@@ -28,14 +28,8 @@ public class MyGoogleBooksLibrary extends WearableActivity implements OAuthListe
         textView = (TextView) findViewById(R.id.textView);
         button = (Button) findViewById(R.id.button2);
         setAmbientEnabled();
-
-
+        
         tokenRetriever = new TokenRetriever(this);
-
-        SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.remove("booksApiToken");
-        editor.commit();
     }
 
     public void getToken(View view) {
