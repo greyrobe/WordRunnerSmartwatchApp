@@ -35,4 +35,9 @@ public class Book{
             private String downloadLink;
         }
     }
+
+    @Override
+    public String toString() {
+        return getTitle();
+    }
 }

@@ -13,14 +13,13 @@ public class LibraryController {
         this.library = library;
     }
 
-    public String getBookTitles() {
+    public String[] getBookTitles() {
         String strBookTitles = "";
         Book[] books = library.getBooks();
-        for(Book book : books) {
-            strBookTitles += book.getTitle();
-            strBookTitles += ": " + book.getEpubDownloadLink();
-            strBookTitles += "\n";
+        String[] titles = new String[library.getBooks().length];
+        for(int i = 0; i < titles.length; i++) {
+            titles[i] = books[i].toString();
         }
-        return strBookTitles;
+        return titles;
     }
 }
